@@ -41,7 +41,7 @@
 				float2 arc = v.vertex.xy;
 				float innerRadius = 1.0;
 				float outerRadius = 1.1;
-				float amplitude = tex2Dlod(_MainTex, float4(v.uv.x + _Time.x * 4.0, 0.0, 0.0, 0.0)).x;
+				float amplitude = tex2Dlod(_MainTex, float4(v.uv.x + _Time.y, 0.0, 0.0, 0.0)).x;
 
 				float scale = innerRadius + (outerRadius - innerRadius) * v.uv.y + amplitude;
 				o.vertex = UnityObjectToClipPos(float3(arc * scale, 0.0));
