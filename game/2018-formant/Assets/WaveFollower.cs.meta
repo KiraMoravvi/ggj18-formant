@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: ef0ef80d67449f24084a3b8e1aa525b1
+timeCreated: 1517001462
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - DrawMesh: {fileID: 4300002, guid: 98b46ee074589c349b9e6d81d71cbcd2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
