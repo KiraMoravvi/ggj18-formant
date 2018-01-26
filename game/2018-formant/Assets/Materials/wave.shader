@@ -41,7 +41,8 @@
 				float2 arc = v.vertex.xy;
 				float innerRadius = 1.0;
 				float outerRadius = 1.1;
-				float amplitude = sin(_Time.x * 100.0 + v.uv.x * 30.0) * 0.25;
+				float amplitude = tex2Dlod(_MainTex, float4(v.uv.x + _Time.x * 4.0, 0.0, 0.0, 0.0)).x;
+
 				float scale = innerRadius + (outerRadius - innerRadius) * v.uv.y + amplitude;
 				o.vertex = UnityObjectToClipPos(float3(arc * scale, 0.0));
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
@@ -51,11 +52,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				// sample the texture
-				fixed4 col = tex2D(_MainTex, i.uv);
-				// apply fog
-				UNITY_APPLY_FOG(i.fogCoord, col);
-				return col;
+				return fixed4(1.0, 1.0, 1.0, 1.0);
 			}
 			ENDCG
 		}
