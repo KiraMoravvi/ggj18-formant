@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1015636757598232}
+  m_RootGameObject: {fileID: 1528650632333486}
   m_IsPrefabParent: 1
---- !u!1 &1015636757598232
+--- !u!1 &1528650632333486
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4805156833207216}
-  - component: {fileID: 33548854339890018}
-  - component: {fileID: 23203599160462828}
-  - component: {fileID: 114291903812630412}
+  - component: {fileID: 4837592310457042}
+  - component: {fileID: 33094065771026886}
+  - component: {fileID: 23914132550426704}
+  - component: {fileID: 114873453467997798}
   m_Layer: 0
-  m_Name: Wave
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4805156833207216
+--- !u!4 &4837592310457042
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1015636757598232}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_GameObject: {fileID: 1528650632333486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23203599160462828
+--- !u!23 &23914132550426704
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1015636757598232}
+  m_GameObject: {fileID: 1528650632333486}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4566dcff3e01aa64a89561c7049fad65, type: 2}
+  - {fileID: 2100000, guid: 9024795f481f74b4d9c7071999873ae7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,22 +74,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33548854339890018
+--- !u!33 &33094065771026886
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1015636757598232}
-  m_Mesh: {fileID: 4300000, guid: f116da94d50bb6843be99a0e2647bba4, type: 3}
---- !u!114 &114291903812630412
+  m_GameObject: {fileID: 1528650632333486}
+  m_Mesh: {fileID: 4300002, guid: 98b46ee074589c349b9e6d81d71cbcd2, type: 3}
+--- !u!114 &114873453467997798
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1015636757598232}
+  m_GameObject: {fileID: 1528650632333486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9466ac8c5b25060418bbe57459b58280, type: 3}
+  m_Script: {fileID: 11500000, guid: ef0ef80d67449f24084a3b8e1aa525b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Texture: {fileID: 2800000, guid: 0085696e80d64c244bf8d4683269b0c2, type: 3}
+  Wave: {fileID: 2800000, guid: 0085696e80d64c244bf8d4683269b0c2, type: 3}
+  Radius: 1.2
+  WavePosition: 0
+  Amplitude: 0.1
+  ShipPosition: 0
