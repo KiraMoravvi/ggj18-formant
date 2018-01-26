@@ -3,6 +3,10 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Position ("Position", Float) = 0.0
+		_Radius ("Radius", Float) = 1.0
+		_Thickness ("Thickness", Float) = 0.25
+		_Amplitude ("Amplitude", Float) = 0.5
 	}
 	SubShader
 	{
@@ -34,16 +38,17 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			float _Position;
+			float _Radius;
+			float _Thickness;
+			float _Amplitude;
 			
 			v2f vert (appdata v)
 			{
 				v2f o;
 				float2 arc = v.vertex.xy;
-				float innerRadius = 1.0;
-				float outerRadius = 1.1;
-				float amplitude = tex2Dlod(_MainTex, float4(v.uv.x + _Time.y, 0.0, 0.0, 0.0)).x;
-
-				float scale = innerRadius + (outerRadius - innerRadius) * v.uv.y + amplitude;
+				float waveSample = tex2Dlod(_MainTex, float4(v.uv.x + _Position, 0.0, 0.0, 0.0)).x;
+				float scale = _Radius + (_Thickness * (v.uv.y - 0.5)) + waveSample * _Amplitude;
 				o.vertex = UnityObjectToClipPos(float3(arc * scale, 0.0));
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				UNITY_TRANSFER_FOG(o,o.vertex);
