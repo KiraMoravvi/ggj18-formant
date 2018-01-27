@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DigitalRuby.Tween;
+
 public class UI : MonoBehaviour {
 
     Text timeText;
     float currentTime = 0;
     public bool RunTimer = true;
-    public float FinalTime
-    {
-        get
-        {
-            return currentTime;
-        }
-    }
+    public float FinalTime { get { return currentTime; } }
 
 	// Use this for initialization
 	void Start ()
@@ -36,14 +32,27 @@ public class UI : MonoBehaviour {
         timeText.text = "Time\n";
 
         if (hours > 0)
-        {
-            timeText.text += formatMultiDigits(hours, 2);
-        }
+            timeText.text += formatMultiDigits(hours, 2) + ":";
 
         timeText.text += formatMultiDigits(minutes, 2);
         timeText.text += ":" + formatMultiDigits(seconds, 2);
         timeText.text += ":" + formatMultiDigits(milliseconds, 3);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerDied();
+        }
 	}
+
+    public void PlayerDied()
+    {
+        RunTimer = false;
+
+        TweenFactory.Tween("Bigger Text", 14, 72, 1, TweenScaleFunctions.QuadraticEaseOut, (t) =>
+        {
+            timeText.fontSize = (int)t.CurrentValue;
+        });
+    }
 
     string formatMultiDigits(int value, int digits)
     {
