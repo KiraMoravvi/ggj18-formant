@@ -4,13 +4,6 @@ using System.Linq;
 using UnityEngine;
 
 public class WaveFollower : MonoBehaviour {
-    public Texture2D Wave;
-
-    public float Radius;
-    public float WavePosition;
-    public float Amplitude;
-    public float ShipPosition;
-
     private Rigidbody Rigidbody;
 
     public Game Game;
