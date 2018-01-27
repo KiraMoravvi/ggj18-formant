@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 23914132550426704}
   - component: {fileID: 114873453467997798}
   - component: {fileID: 54279501787256028}
-  - component: {fileID: 135807415717546714}
+  - component: {fileID: 65335335185309448}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1528650632333486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.1835513, y: -5.1709614, z: 0.80418444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013711153445764}
@@ -183,7 +183,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9024795f481f74b4d9c7071999873ae7, type: 2}
+  - {fileID: 2100000, guid: 29ffbb10c9df31f418f4844cde328d7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,6 +238,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!65 &65335335185309448
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528650632333486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81476325, y: 0.08324123, z: 0.18477014}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114873453467997798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,15 +264,3 @@ MonoBehaviour:
   ControllerForce: 1200
   WavePull: 4000
   Game: {fileID: 0}
---- !u!135 &135807415717546714
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1528650632333486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.19229054
-  m_Center: {x: -0.0129795745, y: 0, z: 0.092871495}

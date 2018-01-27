@@ -28,7 +28,7 @@ public class WaveFollower : MonoBehaviour {
             inputMagnitude = 1.0f;
         }
 
-        Rigidbody.AddForce(new Vector3(-inputX, inputY, 0.0f) * ControllerForce * Time.deltaTime);
+        Rigidbody.AddForce(new Vector3(-inputX, inputY, 0.0f) * ControllerForce * Time.deltaTime, ForceMode.Acceleration);
 
         
         if (inputMagnitude > 0.1f)
@@ -38,7 +38,8 @@ public class WaveFollower : MonoBehaviour {
             var difference = inputAngle - currentAngle;
             if (difference > Mathf.PI) difference -= Mathf.PI * 2.0f;
             if (difference < -Mathf.PI) difference += Mathf.PI * 2.0f;
-            Rigidbody.AddTorque(0.0f, 0.0f, difference);
+            difference *= 100.0f;
+            Rigidbody.AddTorque(0.0f, 0.0f, difference, ForceMode.Acceleration);
         }
 
         transform.GetChild(0).localScale = new Vector3(inputMagnitude * 0.4f, inputMagnitude * 0.7f, 0.0f);
@@ -61,6 +62,6 @@ public class WaveFollower : MonoBehaviour {
         closestWave.IsClosest = true;
 
         var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude);
-        Rigidbody.AddForce(normal * WavePull * Time.deltaTime * wavePullRolloff);
+        Rigidbody.AddForce(normal * WavePull * Time.deltaTime * wavePullRolloff, ForceMode.Acceleration);
     }
 }
