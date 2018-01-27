@@ -8,21 +8,13 @@ public class Sideways : Enemy {
     public float tilt = 2.0f;
     bool left = false;
 
-    Mesh m;
-
-    protected override void Start()
-    {
-        base.Start();
-        m = GetComponent<MeshFilter>().mesh;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         bool updatePosition = false;
         Vector3 worldPos = Camera.main.WorldToScreenPoint(rigidBody.position);
-        Vector3 worldPosLeft = Camera.main.WorldToScreenPoint(rigidBody.position - m.bounds.size);
-        Vector3 worldPosRight = Camera.main.WorldToScreenPoint(rigidBody.position + m.bounds.size);
+        Vector3 worldPosLeft = Camera.main.WorldToScreenPoint(rigidBody.position - mesh.bounds.size);
+        Vector3 worldPosRight = Camera.main.WorldToScreenPoint(rigidBody.position + mesh.bounds.size);
         if (worldPosRight.x < 0)
             updatePosition = true;
         else if (worldPosLeft.x > Camera.main.pixelWidth)
