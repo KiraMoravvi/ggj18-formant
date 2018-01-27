@@ -13,7 +13,7 @@ public class Faller : Enemy {
         float moveVertical = -speed;
 
         Vector3 worldPos = Camera.main.WorldToScreenPoint(rigidBody.position);
-        Vector3 worldPosTop = Camera.main.WorldToScreenPoint(rigidBody.position + mesh.bounds.size);
+        Vector3 worldPosTop = Camera.main.WorldToScreenPoint(rigidBody.position + mesh.mesh.bounds.size);
         
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
         rigidBody.velocity = movement.normalized * speed;
