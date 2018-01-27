@@ -18,11 +18,17 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
     private bool WasClosestLastFrame;
     public float NewlyClosestIntensity;
     public float ClosestIntensity;
+    private readonly List<AudioSource> AudioSources = new List<AudioSource>();
 
     public UnityEngine.Audio.AudioMixerGroup audioOutput;
 
+    private double[] FadingSince = new double[3];
+    private bool[] FadingOut = new bool[3];
+
 	// Use this for initialization
 	void Start () {
+        for (var i = 0; i < 3; i++) FadingSince[i] = StartAt;
+        for (var i = 0; i < 3; i++) FadingOut[i] = Random.Range(0, 2) == 1;
         MeshRenderer = GetComponent<MeshRenderer>().material;
         MeshRenderer.SetTexture("_WaveTex", WaveTexture);
         MeshRenderer.SetTexture("_SequenceTex", SequenceTexture);
@@ -33,6 +39,7 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
             audioSource.loop = true;
             audioSource.PlayScheduled(StartAt);
             audioSource.outputAudioMixerGroup = audioOutput;
+            AudioSources.Add(audioSource);
         }
     }
 	
@@ -70,6 +77,21 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
         MeshRenderer.SetVector("_Amplitude", new Vector4(Amplitude.x, Amplitude.y, Amplitude.z, 0.1f));
         MeshRenderer.SetFloat("_Thickness", 0.25f);
         MeshRenderer.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
+
+        for (var i = 0; i < 3; i++)
+        {
+            var volume = AudioSettings.dspTime - FadingSince[i];
+            volume *= 140.0 / 60.0 / 16.0;
+            if (FadingOut[i]) volume = 1.0 - volume;
+            AudioSources[i].volume = Mathf.Clamp01((float)volume);
+        }
+    }
+
+    public void Toggle()
+    {
+        var channel = Random.Range(0, 3);
+        FadingSince[channel] = AudioSettings.dspTime;
+        FadingOut[channel] = !FadingOut[channel];
     }
 
     public float RadiusAt(float position)

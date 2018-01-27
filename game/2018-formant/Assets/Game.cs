@@ -18,11 +18,15 @@ public class Game : MonoBehaviour {
 
     public List<Ring> Rings = new List<Ring>();
 
+    private double StartedAt;
+    private int LastLoopId;
+
     public readonly List<IWaveRenderer> Waves = new List<IWaveRenderer>();
+    private readonly List<WaveRenderer> WaveRenderers = new List<WaveRenderer>();
 
 	// Use this for initialization
 	void Start () {
-        var startedAt = AudioSettings.dspTime;
+        StartedAt = AudioSettings.dspTime;
         foreach (var ring in Rings)
         {
             var waveRenderer = Instantiate(WavePrefab).GetComponent<WaveRenderer>();
@@ -30,8 +34,9 @@ public class Game : MonoBehaviour {
             waveRenderer.WaveTexture = ring.WaveTexture;
             waveRenderer.SequenceTexture = ring.SequenceTexture;
             waveRenderer.AudioClips = ring.AudioClips;
-            waveRenderer.StartAt = startedAt;
+            waveRenderer.StartAt = StartedAt;
             Waves.Add(waveRenderer);
+            WaveRenderers.Add(waveRenderer);
         }
         var trackerWaveRenderer = Instantiate(TrackerWavePrefab).GetComponent<TrackerWaveRenderer>();
         trackerWaveRenderer.Radius = Waves.Count + 2;
@@ -43,6 +48,14 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        var loopId = (int)Mathf.Floor((float)((AudioSettings.dspTime - StartedAt) * 140.0f / 60.0f / 32.0f));
+        if (loopId != LastLoopId)
+        {
+            for (var i = 0; i < UnityEngine.Random.Range(2, 10); i++)
+            {
+                WaveRenderers[UnityEngine.Random.Range(0, WaveRenderers.Count)].Toggle();
+            }
+        }
+        LastLoopId = loopId;
 	}
 }
