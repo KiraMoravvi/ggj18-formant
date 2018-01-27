@@ -61,7 +61,7 @@
 				float3 sequenceSample = tex2Dlod(_SequenceTex, float4(_LoopProgress, 0.0, 0.0, 0.0)).rgb;
 				float3 waveSample = tex2Dlod(_WaveTex, float4(v.uv.x + _Position, 0.0, 0.0, 0.0)).rgb;
 				float noiseSample = tex2Dlod(_WaveTex, float4(v.uv.x + _NoisePosition, 0.0, 0.0, 0.0)).a;
-				float scale = _Radius + (_Thickness * (v.uv.y - 0.5)) + dot(waveSample, sequenceSample) + noiseSample * _Amplitude.a;
+				float scale = _Radius + (_Thickness * (v.uv.y - 0.5)) + dot(waveSample, sequenceSample * _Amplitude.rgb) + noiseSample * _Amplitude.a;
 				o.vertex = UnityObjectToClipPos(float3(arc * scale, 0.0));
 				o.uv = TRANSFORM_TEX(v.uv, _WaveTex);
 				UNITY_TRANSFER_FOG(o,o.vertex);

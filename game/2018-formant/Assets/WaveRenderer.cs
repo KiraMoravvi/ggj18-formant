@@ -74,10 +74,6 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
         Amplitude -= new Vector3(Mathf.Floor(Amplitude.x), Mathf.Floor(Amplitude.y), Mathf.Floor(Amplitude.z));
         Amplitude = new Vector3(Amplitude.x * 2.0f, Amplitude.y * 1.0f, Amplitude.z * 4.0f);
         Amplitude = new Vector3(1.0f - Mathf.Clamp01(Amplitude.x), 1.0f - Mathf.Clamp01(Amplitude.y), 1.0f - Mathf.Clamp01(Amplitude.z));
-        MeshRenderer.SetVector("_Amplitude", new Vector4(Amplitude.x, Amplitude.y, Amplitude.z, 0.1f));
-        MeshRenderer.SetFloat("_Thickness", 0.25f);
-        MeshRenderer.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
-
         for (var i = 0; i < 3; i++)
         {
             var volume = AudioSettings.dspTime - FadingSince[i];
@@ -85,6 +81,10 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
             if (FadingOut[i]) volume = 1.0 - volume;
             AudioSources[i].volume = Mathf.Clamp01((float)volume);
         }
+        Amplitude = new Vector3(Amplitude.x * AudioSources[0].volume, Amplitude.y * AudioSources[1].volume, Amplitude.z * AudioSources[2].volume);
+        MeshRenderer.SetVector("_Amplitude", new Vector4(Amplitude.x, Amplitude.y, Amplitude.z, 0.1f));
+        MeshRenderer.SetFloat("_Thickness", 0.25f);
+        MeshRenderer.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
     }
 
     public void Toggle()
