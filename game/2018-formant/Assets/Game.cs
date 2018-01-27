@@ -12,6 +12,7 @@ public class Game : MonoBehaviour {
     {
         public Texture2D WaveTexture;
         public Texture2D SequenceTexture;
+        public AudioClip[] AudioClips = new AudioClip[3];
     }
 
     public List<Ring> Rings = new List<Ring>();
@@ -20,12 +21,15 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        var startedAt = AudioSettings.dspTime;
         foreach (var ring in Rings)
         {
             var waveRenderer = Instantiate(WavePrefab).GetComponent<WaveRenderer>();
             waveRenderer.Radius = Waves.Count + 2;
             waveRenderer.WaveTexture = ring.WaveTexture;
             waveRenderer.SequenceTexture = ring.SequenceTexture;
+            waveRenderer.AudioClips = ring.AudioClips;
+            waveRenderer.StartAt = startedAt;
             Waves.Add(waveRenderer);
         }
         var ship = Instantiate(ShipPrefab);
