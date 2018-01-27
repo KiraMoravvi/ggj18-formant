@@ -17,6 +17,7 @@
 		Pass
 		{
 			Blend One One
+			ZWrite Off
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -60,7 +61,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				return fixed4(_Color.xyz * pow(sin(i.uv.x * 3.141), 4.0) * pow(sin(i.uv.y * 3.141), 16.0), 1.0);
+				return fixed4(_Color.xyz * pow(abs(sin(i.uv.x * 3.141)), 4.0) * pow(abs(sin(i.uv.y * 3.141)), 16.0), 1.0);
 			}
 			ENDCG
 		}
