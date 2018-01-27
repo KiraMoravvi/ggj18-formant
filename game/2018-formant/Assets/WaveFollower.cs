@@ -44,6 +44,7 @@ public class WaveFollower : MonoBehaviour {
 
         transform.GetChild(0).localScale = new Vector3(inputMagnitude * 0.4f, inputMagnitude * 0.7f, 0.0f);
         transform.GetChild(1).localScale = new Vector3(inputMagnitude * 0.5f, inputMagnitude * 0.5f, 0.0f);
+        transform.GetChild(0).GetComponent<AudioSource>().volume = inputMagnitude * 0.3f;
 
         var magnitude = Rigidbody.position.magnitude;
         var normal = Rigidbody.position.normalized;

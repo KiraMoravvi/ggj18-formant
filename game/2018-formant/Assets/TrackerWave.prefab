@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4311919283500924}
   - component: {fileID: 33804343782986628}
   - component: {fileID: 23419816674232874}
+  - component: {fileID: 114127097852576296}
   m_Layer: 0
   m_Name: TrackerWave
   m_TagString: Untagged
@@ -48,8 +49,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104484936258500}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -80,3 +81,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104484936258500}
   m_Mesh: {fileID: 4300000, guid: f116da94d50bb6843be99a0e2647bba4, type: 3}
+--- !u!114 &114127097852576296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104484936258500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c867e94145b244fbb2dd8eb525155a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 2
+  NewlyClosestIntensity: 0
+  ClosestIntensity: 0
+  Amplitudes: {x: 0, y: 0, z: 0, w: 0}
+  Positions: {x: 0, y: 0, z: 0, w: 0}
+  Widths: {x: 0, y: 0, z: 0, w: 0}
