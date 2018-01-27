@@ -6,6 +6,8 @@ using UnityEngine;
 public class WaveRenderer : MonoBehaviour {
     public Texture2D Texture;
     public float Radius;
+    public Vector3 Amplitude;
+    public float NoiseAmplitude;
     public bool IsClosest;
 
     private Material MeshRenderer;
@@ -41,9 +43,14 @@ public class WaveRenderer : MonoBehaviour {
         }
         WasClosestLastFrame = IsClosest;
 
-        MeshRenderer.SetFloat("_Position", Time.time * 0.25f);
+        MeshRenderer.SetFloat("_Position", 0.0f);
+        MeshRenderer.SetFloat("_NoisePosition", Time.time);
         MeshRenderer.SetFloat("_Radius", Radius);
-        MeshRenderer.SetFloat("_Amplitude", 0.5f);
+        Amplitude = Time.time * new Vector3(2.0f, 1.0f, 4.0f);
+        Amplitude -= new Vector3(Mathf.Floor(Amplitude.x), Mathf.Floor(Amplitude.y), Mathf.Floor(Amplitude.z));
+        Amplitude = new Vector3(Amplitude.x * 2.0f, Amplitude.y * 1.0f, Amplitude.z * 4.0f);
+        Amplitude = new Vector3(1.0f - Mathf.Clamp01(Amplitude.x), 1.0f - Mathf.Clamp01(Amplitude.y), 1.0f - Mathf.Clamp01(Amplitude.z));
+        MeshRenderer.SetVector("_Amplitude", new Vector4(Amplitude.x, Amplitude.y, Amplitude.z, 0.25f));
         MeshRenderer.SetFloat("_Thickness", 0.25f);
         MeshRenderer.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
     }
