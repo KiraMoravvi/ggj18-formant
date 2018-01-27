@@ -10,15 +10,15 @@ public class WaveFollower : MonoBehaviour {
     public float Amplitude;
     public float ShipPosition;
 
+    private Rigidbody Rigidbody;
+
 	// Use this for initialization
 	void Start () {
+        Rigidbody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ShipPosition += Input.GetAxis("Horizontal") * Time.deltaTime;
-        WavePosition = Time.time * 0.25f;
-        var radius = Wave.GetPixelBilinear(WavePosition - (ShipPosition / Mathf.PI) + 0.5f, 0).r * Amplitude + Radius;
-        GetComponent<MeshFilter>().transform.position = new Vector3(Mathf.Sin(ShipPosition) * radius, Mathf.Cos(ShipPosition) * radius, 0.0f);
+        Rigidbody.AddForce(new Vector3(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f) * 1000.0f * Time.deltaTime);
 	}
 }
