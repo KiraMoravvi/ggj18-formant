@@ -35,12 +35,16 @@ public class osc : MonoBehaviour {
     public float attack;            //delay in ms until on fully
     public float decay;             //delay in ms until off fully
 
+    public float base_frequency;    //'BASE' FREQUENCY
+    public float play_frequency;
+
     public bool trigger;            //DETERMINE IF TRIGGER IS ON/OFF
     public _gain gain_trigger;
 
 
     bool lastTriggerState;
 
+    float baseFrequencyMult = 1;
     float totalT = 0;
 
     void triggerGainCalc(float speed) {
@@ -95,7 +99,8 @@ public class osc : MonoBehaviour {
 
         sample_per_ms = sampling_frequency / 1000;
         lastTriggerState = trigger;
-        
+        play_frequency = base_frequency;
+
     }
 
     // Update is called once per frame
@@ -123,7 +128,7 @@ public class osc : MonoBehaviour {
             lastTriggerState = trigger;
         }
 
-        
+        baseFrequencyMult = play_frequency / base_frequency;
     }
 
     void OnAudioFilterRead(float[] data, int channels) {
@@ -139,7 +144,7 @@ public class osc : MonoBehaviour {
 
         // update increment in case frequency has changed
         for(var j = 0; j < oscillators.Length; ++j) {
-            oscillators[j].increment = oscillators[j].frequency * 2 * Math.PI / sampling_frequency;
+            oscillators[j].increment = baseFrequencyMult * oscillators[j].frequency * 2 * Math.PI / sampling_frequency;
         }
 
         for(var i = 0; i < data.Length; i = i + channels) {

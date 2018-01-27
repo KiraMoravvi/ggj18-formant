@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 718729906}
   - component: {fileID: 718729905}
   - component: {fileID: 718729910}
+  - component: {fileID: 718729911}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -192,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 718729904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -9.989}
+  m_LocalPosition: {x: -0.154, y: 1.004, z: -9.841}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -233,12 +234,40 @@ MonoBehaviour:
   gain: 0.5
   attack: 3000
   decay: 0
+  base_frequency: 0
   trigger: 0
   gain_trigger:
     value: 0
     current: 0
     direction: 0
     sample_delta: 0
+--- !u!114 &718729911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718729904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e7c9c78ce922b4a9c7ea268af7aa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notesToPlay:
+    instrument: {fileID: 718729910}
+    notes:
+    - frequency: 440
+      triggerOn: 0
+      triggerLength: 0.25
+    - frequency: 493.88
+      triggerOn: 0.25
+      triggerLength: 0.25
+    - frequency: 523.25
+      triggerOn: 0.5
+      triggerLength: 0.25
+    - frequency: 659.25
+      triggerOn: 0.75
+      triggerLength: 0.25
+    loop: 1
 --- !u!1 &1785331413
 GameObject:
   m_ObjectHideFlags: 0
