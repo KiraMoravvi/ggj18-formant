@@ -8,7 +8,6 @@ public class WaveFollower : MonoBehaviour {
 
     public float ControllerForce;
     public float WavePull;
-    public float WavePullRolloff;
 
     public Game Game;
 
@@ -61,8 +60,7 @@ public class WaveFollower : MonoBehaviour {
         }
         closestWave.IsClosest = true;
 
-        var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude) * WavePullRolloff;
-        wavePullRolloff += Mathf.Sign(wavePullRolloff);
-        Rigidbody.AddForce(normal * WavePull * Time.deltaTime / wavePullRolloff);
+        var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude);
+        Rigidbody.AddForce(normal * WavePull * Time.deltaTime * wavePullRolloff);
     }
 }
