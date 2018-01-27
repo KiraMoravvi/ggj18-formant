@@ -17,7 +17,7 @@ public class Game : MonoBehaviour {
 
     public List<Ring> Rings = new List<Ring>();
 
-    public readonly List<WaveRenderer> Waves = new List<WaveRenderer>();
+    public readonly List<IWaveRenderer> Waves = new List<IWaveRenderer>();
 
 	// Use this for initialization
 	void Start () {

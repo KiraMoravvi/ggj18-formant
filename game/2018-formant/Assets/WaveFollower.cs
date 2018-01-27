@@ -49,7 +49,7 @@ public class WaveFollower : MonoBehaviour {
         var normal = Rigidbody.position.normalized;
         var angle = Mathf.Atan2(Rigidbody.position.x, Rigidbody.position.y);
 
-        WaveRenderer closestWave = null;
+        IWaveRenderer closestWave = null;
         var distanceToClosestWave = float.PositiveInfinity;
         foreach (var wave in Game.Waves) wave.IsClosest = false;
         foreach (var wave in Game.Waves)

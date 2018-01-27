@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class WaveRenderer : MonoBehaviour {
+public class WaveRenderer : MonoBehaviour, IWaveRenderer {
     public Texture2D WaveTexture;
     public Texture2D SequenceTexture;
     public float Radius;
     public Vector3 Amplitude;
     public float NoiseAmplitude;
-    public bool IsClosest;
+    public bool IsClosest { get; set; }
     public AudioClip[] AudioClips;
     public double StartAt;
 
