@@ -10,11 +10,12 @@
 	}
 	SubShader
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "Queue" = "Transparent" }
 		LOD 100
 
 		Pass
 		{
+			Blend One One
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -57,7 +58,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				return fixed4(1.0, 1.0, 1.0, 1.0);
+				return fixed4(fixed3(2.0, 3.0, 8.0) * pow(sin(i.uv.x * 3.141), 4.0) * pow(sin(i.uv.y * 3.141), 16.0), 1.0);
 			}
 			ENDCG
 		}

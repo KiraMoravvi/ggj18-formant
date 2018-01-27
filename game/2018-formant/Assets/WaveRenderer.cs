@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WaveRenderer : MonoBehaviour {
     public Texture2D Texture;
+    public float Radius;
 
     private Material MeshRenderer;
 
@@ -16,9 +17,9 @@ public class WaveRenderer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        MeshRenderer.SetFloat("_Position", Time.time);
-        MeshRenderer.SetFloat("_Radius", 3.0f);
-        MeshRenderer.SetFloat("_Amplitude", 0.1f);
+        MeshRenderer.SetFloat("_Position", Time.time * 0.25f);
+        MeshRenderer.SetFloat("_Radius", Radius);
+        MeshRenderer.SetFloat("_Amplitude", 0.5f);
         MeshRenderer.SetFloat("_Thickness", 0.25f);
     }
 }
