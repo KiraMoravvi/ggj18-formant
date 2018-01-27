@@ -6,6 +6,10 @@ using UnityEngine;
 public class WaveFollower : MonoBehaviour {
     private Rigidbody Rigidbody;
 
+    public float ControllerForce;
+    public float WavePull;
+    public float WavePullRolloff;
+
     public Game Game;
 
 	// Use this for initialization
@@ -15,7 +19,7 @@ public class WaveFollower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Rigidbody.AddForce(new Vector3(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f) * 1000.0f * Time.deltaTime);
+        Rigidbody.AddForce(new Vector3(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f) * ControllerForce * Time.deltaTime);
 
         var magnitude = Rigidbody.position.magnitude;
         var normal = Rigidbody.position.normalized;
@@ -31,8 +35,8 @@ public class WaveFollower : MonoBehaviour {
             distanceToClosestWave = distanceToWave;
         }
 
-        var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude) * 3.0f;
+        var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude) * WavePullRolloff;
         wavePullRolloff += Mathf.Sign(wavePullRolloff);
-        Rigidbody.AddForce(normal * 1000.0f * Time.deltaTime / wavePullRolloff);
+        Rigidbody.AddForce(normal * WavePull * Time.deltaTime / wavePullRolloff);
     }
 }
