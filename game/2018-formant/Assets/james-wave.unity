@@ -342,6 +342,18 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a0e2468c8bcc0044e8399aaa8d2c4d19, type: 3}
     - {fileID: 8300000, guid: 1cfa6613fd02df14baf5653bf0844953, type: 3}
     - {fileID: 8300000, guid: 8a7f5cb860fd96444989459674b6ee30, type: 3}
+  - WaveTexture: {fileID: 2800000, guid: ef3e466d8dc8b924b9503713cb85b106, type: 3}
+    SequenceTexture: {fileID: 2800000, guid: 7dc82991e343b2a43a159fa82b3b7002, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: ecce964adec64104eb335eaf74781191, type: 3}
+    - {fileID: 8300000, guid: 702704652f937984597cdc5123c06566, type: 3}
+    - {fileID: 8300000, guid: 56384d67a139be34eac96da9e1da3d79, type: 3}
+  - WaveTexture: {fileID: 2800000, guid: ef3e466d8dc8b924b9503713cb85b106, type: 3}
+    SequenceTexture: {fileID: 2800000, guid: 7dc82991e343b2a43a159fa82b3b7002, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 46bb8e8fd50e319409183a8dc2f36ac2, type: 3}
+    - {fileID: 8300000, guid: fb15133c4c1709e408dc2c9b8d610ffe, type: 3}
+    - {fileID: 8300000, guid: 0175a7eaf51078742ab8dd51ab0bd0b3, type: 3}
 --- !u!4 &716590648
 Transform:
   m_ObjectHideFlags: 0
