@@ -183,7 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581436186
 GameObject:
@@ -320,6 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WavePrefab: {fileID: 1015636757598232, guid: b4a4d898a42e855438f2594f1e1f2b31, type: 2}
+  TrackerWavePrefab: {fileID: 1104484936258500, guid: d506cd3026bd3f642be2560065caf3fb,
+    type: 2}
   ShipPrefab: {fileID: 1528650632333486, guid: 15182e6807054164b9f1347f3a79f881, type: 2}
   Rings:
   - WaveTexture: {fileID: 2800000, guid: 0507e7e0bda4c094c94534538943ad07, type: 3}
@@ -659,7 +661,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ae533eccafe8ac04398e856812a49701, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ae533eccafe8ac04398e856812a49701, type: 3}
       propertyPath: m_Materials.Array.data[1]

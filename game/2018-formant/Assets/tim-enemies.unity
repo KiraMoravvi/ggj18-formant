@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 728938617}
   - component: {fileID: 728938621}
   - component: {fileID: 728938622}
+  - component: {fileID: 728938623}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -224,6 +225,20 @@ MonoBehaviour:
   yMax: 5
   speed: 10
   tilt: 1
+  fireRatePerSec: 5
+--- !u!114 &728938623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728938616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4474fb0ff246c4b9f05583e9f4493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NUM_BULLETS: 20
+  Instance: {fileID: 114399234729525782, guid: c01d666cec2143d46ad60fc1d9802d4c, type: 2}
 --- !u!1 &980300667
 GameObject:
   m_ObjectHideFlags: 0

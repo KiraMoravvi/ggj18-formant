@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
     public GameObject WavePrefab;
+    public GameObject TrackerWavePrefab;
     public GameObject ShipPrefab;
 
     [Serializable]
@@ -17,7 +18,7 @@ public class Game : MonoBehaviour {
 
     public List<Ring> Rings = new List<Ring>();
 
-    public readonly List<WaveRenderer> Waves = new List<WaveRenderer>();
+    public readonly List<IWaveRenderer> Waves = new List<IWaveRenderer>();
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,9 @@ public class Game : MonoBehaviour {
             waveRenderer.StartAt = startedAt;
             Waves.Add(waveRenderer);
         }
+        var trackerWaveRenderer = Instantiate(TrackerWavePrefab).GetComponent<TrackerWaveRenderer>();
+        trackerWaveRenderer.Radius = Waves.Count + 2;
+        Waves.Add(trackerWaveRenderer);
         var ship = Instantiate(ShipPrefab);
         ship.GetComponent<WaveFollower>().Game = this;
         ship.transform.position = new Vector3(0.0f, 3.0f);
