@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
     protected Rigidbody rigidBody;
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
         rigidBody = GetComponent<Rigidbody>();
 	}
 }

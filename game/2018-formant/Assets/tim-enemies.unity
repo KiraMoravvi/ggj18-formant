@@ -116,8 +116,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 728938620}
-  - component: {fileID: 728938619}
   - component: {fileID: 728938618}
+  - component: {fileID: 728938619}
   - component: {fileID: 728938617}
   - component: {fileID: 728938621}
   - component: {fileID: 728938622}
@@ -178,7 +178,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728938616}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &728938620
 Transform:
   m_ObjectHideFlags: 0
@@ -235,8 +235,8 @@ GameObject:
   - component: {fileID: 980300671}
   - component: {fileID: 980300670}
   - component: {fileID: 980300669}
+  - component: {fileID: 980300673}
   - component: {fileID: 980300668}
-  - component: {fileID: 980300674}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -323,7 +323,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &980300674
+--- !u!114 &980300673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -331,12 +331,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 980300667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04c2f75772a90445bea5ccca8e959ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 91d200f118abba7468a9b5f7456aca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 728938620}
   speed: 5
-  range: 2
   tilt: 2
 --- !u!1 &1355253151
 GameObject:
