@@ -249,9 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0ef80d67449f24084a3b8e1aa525b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerForce: 1000
+  ControllerForce: 1600
   WavePull: 3000
-  WavePullRolloff: 5
+  WavePullRolloff: 4.5
   Game: {fileID: 0}
 --- !u!135 &135807415717546714
 SphereCollider:
