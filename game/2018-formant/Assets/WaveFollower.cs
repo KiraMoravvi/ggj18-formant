@@ -19,12 +19,22 @@ public class WaveFollower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Rigidbody.AddForce(new Vector3(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f) * ControllerForce * Time.deltaTime);
+        var inputX = Input.GetAxis("Horizontal");
+        var inputY = Input.GetAxis("Vertical");
+        var inputMagnitude = new Vector2(inputX, inputY).magnitude;
+        if (inputMagnitude > 1.0f)
+        {
+            inputX /= inputMagnitude;
+            inputY /= inputMagnitude;
+            inputMagnitude = 1.0f;
+        }
 
-        var inputMagnitude = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude;
+        Rigidbody.AddForce(new Vector3(-inputX, inputY, 0.0f) * ControllerForce * Time.deltaTime);
+
+        
         if (inputMagnitude > 0.1f)
         {
-            var inputAngle = Mathf.Atan2(-Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical")) + Mathf.PI;
+            var inputAngle = Mathf.Atan2(-inputX, -inputY) + Mathf.PI;
             var currentAngle = Rigidbody.rotation.eulerAngles.z * Mathf.PI / 180.0f;
             var difference = inputAngle - currentAngle;
             if (difference > Mathf.PI) difference -= Mathf.PI * 2.0f;
