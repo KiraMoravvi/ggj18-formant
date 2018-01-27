@@ -25,6 +25,6 @@ public class WaveRenderer : MonoBehaviour {
 
     public float RadiusAt(float position)
     {
-        return Radius;
+        return Texture.GetPixelBilinear(Time.time * 0.25f - (position / Mathf.PI) + 0.5f, 0).r * 0.5f + Radius;
     }
 }
