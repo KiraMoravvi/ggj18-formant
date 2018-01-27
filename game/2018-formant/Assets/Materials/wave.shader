@@ -2,7 +2,8 @@
 {
 	Properties
 	{
-		_MainTex ("Texture", 2D) = "white" {}
+		_WaveTex ("Texture", 2D) = "white" {}
+		_SequenceTex("Texture", 2D) = "white" {}
 		_Position ("Position", Float) = 0.0
 		_NoisePosition("NoisePosition", Float) = 0.0
 		_Radius ("Radius", Float) = 1.0
@@ -40,8 +41,10 @@
 				float4 vertex : SV_POSITION;
 			};
 
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
+			sampler2D _WaveTex;
+			sampler2D _SequenceTex;
+			float4 _WaveTex_ST;
+			float4 _SequenceTex_ST;
 			float _Position;
 			float _NoisePosition;
 			float _Radius;
@@ -53,11 +56,12 @@
 			{
 				v2f o;
 				float2 arc = v.vertex.xy;
-				float3 waveSample = tex2Dlod(_MainTex, float4(v.uv.x + _Position, 0.0, 0.0, 0.0)).rgb;
-				float noiseSample = tex2Dlod(_MainTex, float4(v.uv.x + _NoisePosition, 0.0, 0.0, 0.0)).a;
-				float scale = _Radius + (_Thickness * (v.uv.y - 0.5)) + dot(waveSample, _Amplitude.rgb) + noiseSample * _Amplitude.a;
+				float3 sequenceSample = tex2Dlod(_SequenceTex, float4(_Time.y * 0.25, 0.0, 0.0, 0.0)).rgb;
+				float3 waveSample = tex2Dlod(_WaveTex, float4(v.uv.x + _Position, 0.0, 0.0, 0.0)).rgb;
+				float noiseSample = tex2Dlod(_WaveTex, float4(v.uv.x + _NoisePosition, 0.0, 0.0, 0.0)).a;
+				float scale = _Radius + (_Thickness * (v.uv.y - 0.5)) + dot(waveSample, sequenceSample) + noiseSample * _Amplitude.a;
 				o.vertex = UnityObjectToClipPos(float3(arc * scale, 0.0));
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				o.uv = TRANSFORM_TEX(v.uv, _WaveTex);
 				UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
 			}

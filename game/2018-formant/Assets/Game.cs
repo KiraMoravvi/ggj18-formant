@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,25 @@ public class Game : MonoBehaviour {
     public GameObject WavePrefab;
     public GameObject ShipPrefab;
 
-    public List<Texture2D> WaveTextures = new List<Texture2D>();
+    [Serializable]
+    public sealed class Ring
+    {
+        public Texture2D WaveTexture;
+        public Texture2D SequenceTexture;
+    }
+
+    public List<Ring> Rings = new List<Ring>();
+
     public readonly List<WaveRenderer> Waves = new List<WaveRenderer>();
 
 	// Use this for initialization
 	void Start () {
-        foreach (var waveTexture in WaveTextures)
+        foreach (var ring in Rings)
         {
             var waveRenderer = Instantiate(WavePrefab).GetComponent<WaveRenderer>();
             waveRenderer.Radius = Waves.Count + 2;
-            waveRenderer.Texture = waveTexture;
+            waveRenderer.WaveTexture = ring.WaveTexture;
+            waveRenderer.SequenceTexture = ring.SequenceTexture;
             Waves.Add(waveRenderer);
         }
         var ship = Instantiate(ShipPrefab);

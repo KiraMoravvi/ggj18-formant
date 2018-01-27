@@ -4,7 +4,8 @@ using UnityEditor;
 using UnityEngine;
 
 public class WaveRenderer : MonoBehaviour {
-    public Texture2D Texture;
+    public Texture2D WaveTexture;
+    public Texture2D SequenceTexture;
     public float Radius;
     public Vector3 Amplitude;
     public float NoiseAmplitude;
@@ -19,7 +20,8 @@ public class WaveRenderer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MeshRenderer = GetComponent<MeshRenderer>().material;
-        MeshRenderer.SetTexture("_MainTex", Texture);
+        MeshRenderer.SetTexture("_WaveTex", WaveTexture);
+        MeshRenderer.SetTexture("_SequenceTex", SequenceTexture);
     }
 	
 	// Update is called once per frame
@@ -57,6 +59,6 @@ public class WaveRenderer : MonoBehaviour {
 
     public float RadiusAt(float position)
     {
-        return Texture.GetPixelBilinear(Time.time * 0.25f - (position / Mathf.PI) + 0.5f, 0).r * 0.5f + Radius;
+        return WaveTexture.GetPixelBilinear(Time.time * 0.25f - (position / Mathf.PI) + 0.5f, 0).r * 0.5f + Radius;
     }
 }
