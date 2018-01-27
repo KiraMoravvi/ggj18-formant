@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Faller : Enemy {
 
-    public float tilt = 2;
+    public float tilt = 2.0f;
     // Update is called once per frame
     void FixedUpdate()
     {
