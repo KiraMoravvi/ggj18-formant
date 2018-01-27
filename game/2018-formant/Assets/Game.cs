@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
     public GameObject WavePrefab;
+    public GameObject ShipPrefab;
 
     public List<Texture2D> WaveTextures = new List<Texture2D>();
     public readonly List<WaveRenderer> Waves = new List<WaveRenderer>();
@@ -17,6 +18,7 @@ public class Game : MonoBehaviour {
             waveRenderer.Texture = waveTexture;
             Waves.Add(waveRenderer);
         }
+        Instantiate(ShipPrefab);
 	}
 	
 	// Update is called once per frame

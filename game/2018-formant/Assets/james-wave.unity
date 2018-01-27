@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WavePrefab: {fileID: 1015636757598232, guid: b4a4d898a42e855438f2594f1e1f2b31, type: 2}
+  ShipPrefab: {fileID: 1528650632333486, guid: 15182e6807054164b9f1347f3a79f881, type: 2}
   WaveTextures:
   - {fileID: 2800000, guid: 5e3211beecac60840bac7b86acc8f1a7, type: 3}
   - {fileID: 2800000, guid: 943f1351275a57543925c3c0d215d91a, type: 3}
