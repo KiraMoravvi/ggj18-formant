@@ -309,6 +309,22 @@ MonoBehaviour:
   Rings:
   - WaveTexture: {fileID: 2800000, guid: 0507e7e0bda4c094c94534538943ad07, type: 3}
     SequenceTexture: {fileID: 2800000, guid: 1348d46fa155bf94c8eba68b5152e143, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: f84c42f1ded51c34a8227650f3a7cf6e, type: 3}
+    - {fileID: 8300000, guid: c322dc92aa6d262448129ef18c923b0d, type: 3}
+    - {fileID: 8300000, guid: 74fd67585cd906d438a525c219b65aa6, type: 3}
+  - WaveTexture: {fileID: 2800000, guid: 7dbe62f4990a6c847bff902ceec08e7b, type: 3}
+    SequenceTexture: {fileID: 2800000, guid: 7af3d4319ce35d14589741bb33101aac, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: d84f0cc1e9a43f442a134a4f541dd85f, type: 3}
+    - {fileID: 8300000, guid: 37beccfc03dfb00408dc73e33e56f7f2, type: 3}
+    - {fileID: 8300000, guid: 3fb628457ae7d5745abd27717f30315d, type: 3}
+  - WaveTexture: {fileID: 2800000, guid: ef3e466d8dc8b924b9503713cb85b106, type: 3}
+    SequenceTexture: {fileID: 2800000, guid: 7dc82991e343b2a43a159fa82b3b7002, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: a0e2468c8bcc0044e8399aaa8d2c4d19, type: 3}
+    - {fileID: 8300000, guid: 1cfa6613fd02df14baf5653bf0844953, type: 3}
+    - {fileID: 8300000, guid: 8a7f5cb860fd96444989459674b6ee30, type: 3}
 --- !u!4 &716590648
 Transform:
   m_ObjectHideFlags: 0
