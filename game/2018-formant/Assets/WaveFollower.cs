@@ -27,6 +27,7 @@ public class WaveFollower : MonoBehaviour {
 
         WaveRenderer closestWave = null;
         var distanceToClosestWave = float.PositiveInfinity;
+        foreach (var wave in Game.Waves) wave.IsClosest = false;
         foreach (var wave in Game.Waves)
         {
             var distanceToWave = Mathf.Abs(wave.RadiusAt(angle) - magnitude);
@@ -34,6 +35,7 @@ public class WaveFollower : MonoBehaviour {
             closestWave = wave;
             distanceToClosestWave = distanceToWave;
         }
+        closestWave.IsClosest = true;
 
         var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude) * WavePullRolloff;
         wavePullRolloff += Mathf.Sign(wavePullRolloff);
