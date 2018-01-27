@@ -9,9 +9,20 @@ public class Enemy : MonoBehaviour {
     protected Rigidbody rigidBody;
     protected Mesh mesh;
 
+    public int Health = 3;
+
 	// Use this for initialization
 	protected virtual void Start () {
         rigidBody = GetComponent<Rigidbody>();
         mesh = GetComponent<MeshFilter>().mesh;
 	}
+
+    public void Hurt()
+    {
+        Debug.Log("Ouch");
+
+        Health--;
+        if (Health <= 0)
+            Destroy(gameObject);
+    }
 }
