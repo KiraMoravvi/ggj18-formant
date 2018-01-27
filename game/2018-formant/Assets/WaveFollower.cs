@@ -26,18 +26,19 @@ public class WaveFollower : MonoBehaviour {
 
         var magnitude = Rigidbody.position.magnitude;
         var normal = Rigidbody.position.normalized;
+        var angle = Mathf.Atan2(Rigidbody.position.x, Rigidbody.position.y);
 
         var closestWave = Game.Waves.First();
-        var distanceToClosestWave = Mathf.Abs(closestWave.RadiusAt(ShipPosition) - magnitude);
+        var distanceToClosestWave = Mathf.Abs(closestWave.RadiusAt(angle) - magnitude);
         foreach (var wave in Game.Waves.Skip(1))
         {
-            var distanceToWave = Mathf.Abs(wave.RadiusAt(ShipPosition) - magnitude);
+            var distanceToWave = Mathf.Abs(wave.RadiusAt(angle) - magnitude);
             if (distanceToWave >= distanceToClosestWave) continue;
             closestWave = wave;
             distanceToClosestWave = distanceToWave;
         }
 
-        var wavePullRolloff = (closestWave.RadiusAt(ShipPosition) - magnitude) * 3.0f;
+        var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude) * 3.0f;
         wavePullRolloff += Mathf.Sign(wavePullRolloff);
         Rigidbody.AddForce(normal * 1000.0f * Time.deltaTime / wavePullRolloff);
     }
