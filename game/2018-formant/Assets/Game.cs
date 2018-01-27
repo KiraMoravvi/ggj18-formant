@@ -14,7 +14,7 @@ public class Game : MonoBehaviour {
         foreach (var waveTexture in WaveTextures)
         {
             var waveRenderer = Instantiate(WavePrefab).GetComponent<WaveRenderer>();
-            waveRenderer.Radius = Waves.Count + 1;
+            waveRenderer.Radius = Waves.Count + 2;
             waveRenderer.Texture = waveTexture;
             Waves.Add(waveRenderer);
         }
