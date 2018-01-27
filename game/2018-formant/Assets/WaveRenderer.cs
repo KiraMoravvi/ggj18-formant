@@ -4,9 +4,14 @@ using UnityEditor;
 using UnityEngine;
 
 public class WaveRenderer : MonoBehaviour {
-    public Texture2D Texture;
+    public Texture2D WaveTexture;
+    public Texture2D SequenceTexture;
     public float Radius;
+    public Vector3 Amplitude;
+    public float NoiseAmplitude;
     public bool IsClosest;
+    public AudioClip[] AudioClips;
+    public double StartAt;
 
     private Material MeshRenderer;
 
@@ -17,7 +22,15 @@ public class WaveRenderer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MeshRenderer = GetComponent<MeshRenderer>().material;
-        MeshRenderer.SetTexture("_MainTex", Texture);
+        MeshRenderer.SetTexture("_WaveTex", WaveTexture);
+        MeshRenderer.SetTexture("_SequenceTex", SequenceTexture);
+        foreach (var audioClip in AudioClips)
+        {
+            var audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = audioClip;
+            audioSource.loop = true;
+            audioSource.PlayScheduled(StartAt);
+        }
     }
 	
 	// Update is called once per frame
@@ -41,15 +54,28 @@ public class WaveRenderer : MonoBehaviour {
         }
         WasClosestLastFrame = IsClosest;
 
-        MeshRenderer.SetFloat("_Position", Time.time * 0.25f);
+        var time = AudioSettings.dspTime - StartAt;
+        time *= (140.0 / 60.0) / 8.0;
+        MeshRenderer.SetFloat("_LoopProgress", ((float)time) - Mathf.Floor((float)time));
+        MeshRenderer.SetFloat("_Position", 0.0f);
+        MeshRenderer.SetFloat("_NoisePosition", Time.time);
         MeshRenderer.SetFloat("_Radius", Radius);
-        MeshRenderer.SetFloat("_Amplitude", 0.5f);
+        Amplitude = Time.time * new Vector3(2.0f, 1.0f, 4.0f);
+        Amplitude -= new Vector3(Mathf.Floor(Amplitude.x), Mathf.Floor(Amplitude.y), Mathf.Floor(Amplitude.z));
+        Amplitude = new Vector3(Amplitude.x * 2.0f, Amplitude.y * 1.0f, Amplitude.z * 4.0f);
+        Amplitude = new Vector3(1.0f - Mathf.Clamp01(Amplitude.x), 1.0f - Mathf.Clamp01(Amplitude.y), 1.0f - Mathf.Clamp01(Amplitude.z));
+        MeshRenderer.SetVector("_Amplitude", new Vector4(Amplitude.x, Amplitude.y, Amplitude.z, 0.1f));
         MeshRenderer.SetFloat("_Thickness", 0.25f);
         MeshRenderer.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
     }
 
     public float RadiusAt(float position)
     {
-        return Texture.GetPixelBilinear(Time.time * 0.25f - (position / Mathf.PI) + 0.5f, 0).r * 0.5f + Radius;
+        var time = AudioSettings.dspTime - StartAt;
+        time *= (140.0 / 60.0) / 8.0;
+        var loopedTime = ((float)time) - Mathf.Floor((float)time);
+        var sequenceSample = SequenceTexture.GetPixelBilinear(loopedTime, 0.0f);
+        var waveSample = WaveTexture.GetPixelBilinear((-position / Mathf.PI) + 0.5f, 0);
+        return Radius + Vector3.Dot(new Vector3(sequenceSample.r, sequenceSample.g, sequenceSample.b), new Vector3(waveSample.r, waveSample.g, waveSample.b));
     }
 }
