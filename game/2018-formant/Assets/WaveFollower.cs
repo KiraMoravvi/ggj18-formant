@@ -12,6 +12,8 @@ public class WaveFollower : MonoBehaviour {
 
     private Rigidbody Rigidbody;
 
+    public Game Game;
+
 	// Use this for initialization
 	void Start () {
         Rigidbody = GetComponent<Rigidbody>();

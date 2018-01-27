@@ -18,7 +18,9 @@ public class Game : MonoBehaviour {
             waveRenderer.Texture = waveTexture;
             Waves.Add(waveRenderer);
         }
-        Instantiate(ShipPrefab).transform.position = new Vector3(0.0f, 3.0f);
+        var ship = Instantiate(ShipPrefab);
+        ship.GetComponent<WaveFollower>().Game = this;
+        ship.transform.position = new Vector3(0.0f, 3.0f);
 	}
 	
 	// Update is called once per frame
