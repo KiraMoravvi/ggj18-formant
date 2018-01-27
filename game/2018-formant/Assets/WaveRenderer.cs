@@ -19,6 +19,8 @@ public class WaveRenderer : MonoBehaviour {
     public float NewlyClosestIntensity;
     public float ClosestIntensity;
 
+    public UnityEngine.Audio.AudioMixerGroup audioOutput;
+
 	// Use this for initialization
 	void Start () {
         MeshRenderer = GetComponent<MeshRenderer>().material;
@@ -30,6 +32,7 @@ public class WaveRenderer : MonoBehaviour {
             audioSource.clip = audioClip;
             audioSource.loop = true;
             audioSource.PlayScheduled(StartAt);
+            audioSource.outputAudioMixerGroup = audioOutput;
         }
     }
 	

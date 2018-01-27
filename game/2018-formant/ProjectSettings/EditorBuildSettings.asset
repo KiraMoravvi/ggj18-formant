@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/mainmenu.unity
+    guid: 28394bc1ddb5d3940a5e8a8413f61378
+  - enabled: 1
     path: Assets/james-wave.unity
     guid: 3b0f7ecb55f565545bc481840630ccd7
