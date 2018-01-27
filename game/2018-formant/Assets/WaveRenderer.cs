@@ -22,4 +22,9 @@ public class WaveRenderer : MonoBehaviour {
         MeshRenderer.SetFloat("_Amplitude", 0.5f);
         MeshRenderer.SetFloat("_Thickness", 0.25f);
     }
+
+    public float RadiusAt(float position)
+    {
+        return Radius;
+    }
 }
