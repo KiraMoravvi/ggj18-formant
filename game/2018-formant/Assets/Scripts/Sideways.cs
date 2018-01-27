@@ -13,8 +13,8 @@ public class Sideways : Enemy {
     {
         bool updatePosition = false;
         Vector3 worldPos = Camera.main.WorldToScreenPoint(rigidBody.position);
-        Vector3 worldPosLeft = Camera.main.WorldToScreenPoint(rigidBody.position - mesh.bounds.size);
-        Vector3 worldPosRight = Camera.main.WorldToScreenPoint(rigidBody.position + mesh.bounds.size);
+        Vector3 worldPosLeft = Camera.main.WorldToScreenPoint(rigidBody.position - mesh.mesh.bounds.size);
+        Vector3 worldPosRight = Camera.main.WorldToScreenPoint(rigidBody.position + mesh.mesh.bounds.size);
         if (worldPosRight.x < 0)
             updatePosition = true;
         else if (worldPosLeft.x > Camera.main.pixelWidth)

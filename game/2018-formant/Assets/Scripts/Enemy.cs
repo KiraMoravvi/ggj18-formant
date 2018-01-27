@@ -7,14 +7,16 @@ public class Enemy : MonoBehaviour {
     public Transform player;
     public float speed = 5;
     protected Rigidbody rigidBody;
-    protected Mesh mesh;
+    protected MeshFilter mesh;
 
     public int Health = 3;
 
 	// Use this for initialization
-	protected virtual void Start () {
+	protected virtual void Start ()
+    {
+        player = GameObject.Find("Player").transform;
         rigidBody = GetComponent<Rigidbody>();
-        mesh = GetComponent<MeshFilter>().mesh;
+        mesh = GetComponent<MeshFilter>();
 	}
 
     public void Hurt()
