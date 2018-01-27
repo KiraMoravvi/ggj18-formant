@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Thrust"
+﻿Shader "Unlit/Halo"
 {
 	Properties
 	{
@@ -48,8 +48,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float intensity = abs(sin(i.uv.y * 8.0 + _Time.y * 16.0)) * pow(saturate(1.0 - 2.0 * distance(i.uv.xy * float2(1.0, 0.5), float2(0.5, 0.5))), 4.0);
-				return fixed4(float3(8.0, 5.0, 1.0) * intensity, 1.0);
+				return fixed4(float3(8.0f, 8.0f, 4.0f) * pow(saturate(1.0 - 2.0 * distance(i.uv, 0.5)), 6.0), 1.0);
 			}
 			ENDCG
 		}
