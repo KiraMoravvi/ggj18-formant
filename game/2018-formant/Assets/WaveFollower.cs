@@ -74,7 +74,7 @@ public class WaveFollower : MonoBehaviour {
         var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude);
         Rigidbody.AddForce(normal * WavePull * Time.deltaTime * wavePullRolloff, ForceMode.Acceleration);
 
-        Vector3 fireDirection = new Vector3();
+        Vector3 fireDirection = new Vector3(Input.GetAxis("Fire Horizontal"), Input.GetAxis("Fire Vertical"));
         if (Input.GetKey(KeyCode.I))
             fireDirection.y = 1;
         if (Input.GetKey(KeyCode.K))
@@ -84,7 +84,7 @@ public class WaveFollower : MonoBehaviour {
         if (Input.GetKey(KeyCode.J))
             fireDirection.x = 1;
 
-        if (fireDirection != Vector3.zero)
+        if (fireDirection.magnitude > 0.1f)
         {
             if (fireTimer == 0)
             {
