@@ -184,15 +184,16 @@ public class tracker : MonoBehaviour {
         beat += (bpm / 60) * Time.deltaTime;
         //lastNote = findPrevNote(beat,true);
         lastNote = findPrevNote(beat, true);
+        if(lastNote.noteIndex < notesToPlay.notes.Length && lastNote.noteIndex >= 0) {
+            var curNoteInfo = notesToPlay.notes[lastNote.noteIndex];
 
-        var curNoteInfo = notesToPlay.notes[lastNote.noteIndex];
+            notesToPlay.instrument.play_frequency = notesToPlay.notes[lastNote.noteIndex].frequency;
 
-        notesToPlay.instrument.play_frequency = notesToPlay.notes[lastNote.noteIndex].frequency;
-
-        if(lastNote.distanceFromT < curNoteInfo.triggerLength) {
-            notesToPlay.instrument.trigger = true;
-        } else {
-            notesToPlay.instrument.trigger = false;
+            if(lastNote.distanceFromT < curNoteInfo.triggerLength) {
+                notesToPlay.instrument.trigger = true;
+            } else {
+                notesToPlay.instrument.trigger = false;
+            }
         }
     }
 
