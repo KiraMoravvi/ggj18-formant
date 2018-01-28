@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Start ()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Ship(Clone)").transform;
         rigidBody = GetComponent<Rigidbody>();
         mesh = GetComponent<MeshFilter>();
 	}

@@ -301,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716590648}
   - component: {fileID: 716590647}
+  - component: {fileID: 716590649}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -367,6 +368,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &716590649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716590646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b00d5227b88dfa4b804baaf4696074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextEnemySpawnTime: 5
+  spawnDecreaseRate: 1
+  minSpawnTime: 3
+  enemyDecreaseCount: 10
+  maxEnemies: 20
+  meshList:
+  - {fileID: 4300000, guid: 1f4b4ea4e1ba9774aac33651488ce7b9, type: 3}
+  - {fileID: 4300000, guid: 9cbaa16c11add604c8c826d20297a4b2, type: 3}
+  - {fileID: 4300000, guid: 657d4628823043b40bfe6a0dea0c962d, type: 3}
+  - {fileID: 4300000, guid: e1f4cbfd94fa9c748b7044d60c3cbda4, type: 3}
+  Instance: {fileID: 1971192321982600, guid: 9f934ca828d786f4ba33b02dec6a7d1f, type: 2}
 --- !u!1 &879588349
 GameObject:
   m_ObjectHideFlags: 0
