@@ -85,7 +85,7 @@ public class WaveFollower : MonoBehaviour {
             if (fireTimer == 0)
             {
                 fireDirection.Normalize();
-                BulletGroup.Fire(Rigidbody.position, fireDirection, 50);
+                BulletGroup.Fire(Rigidbody.position, fireDirection, 12.5f);
             }
 
             fireTimer += Time.fixedDeltaTime;
