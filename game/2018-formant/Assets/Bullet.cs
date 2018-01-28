@@ -21,6 +21,16 @@ public class Bullet : MonoBehaviour {
         Kill();
     }
 
+    void Update()
+    {
+        Vector3 worldPos = Camera.main.WorldToScreenPoint(rb.position);
+
+        if (worldPos.y < 0 || worldPos.y > Camera.main.pixelHeight)
+            Kill();
+        if (worldPos.x < 0 || worldPos.x > Camera.main.pixelWidth)
+            Kill();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Enemy e = other.GetComponent<Enemy>();
