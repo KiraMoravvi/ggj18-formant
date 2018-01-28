@@ -39,7 +39,7 @@ public class BulletGroup : MonoBehaviour {
 
         if (b)
         {
-            AudioSource.PlayClipAtPoint(Pew[Random.Range(0, Pew.Count)], new Vector3(pos.x, pos.y, 5.0f));
+            AudioSource.PlayClipAtPoint(Pew[Random.Range(0, Pew.Count)], Vector3.Lerp(pos, GameObject.Find("Main Camera").transform.position, 0.9f));
 
             b.Activate();
             b.RB.position = pos;
