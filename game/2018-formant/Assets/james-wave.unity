@@ -404,6 +404,8 @@ MonoBehaviour:
   TakeDamageAudioClips:
   - {fileID: 8300000, guid: f1a6f3416d921ec4ea4560e72e6a2859, type: 3}
   - {fileID: 8300000, guid: adf78986d6d57fb4690dbdb7f9c3fdbe, type: 3}
+  ExplosionFlash: {fileID: 1086605355503136, guid: bf0ef81ab9eb89049acc6e91b04018bd,
+    type: 2}
 --- !u!1 &879588349
 GameObject:
   m_ObjectHideFlags: 0

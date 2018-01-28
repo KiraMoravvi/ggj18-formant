@@ -365,4 +365,6 @@ MonoBehaviour:
   ControllerForce: 1200
   WavePull: 4000
   DeathAudioClip: {fileID: 8300000, guid: fd5d726edd2231044955e6dd58445ca1, type: 3}
+  ExplosionFlash: {fileID: 1086605355503136, guid: bf0ef81ab9eb89049acc6e91b04018bd,
+    type: 2}
   Game: {fileID: 0}
