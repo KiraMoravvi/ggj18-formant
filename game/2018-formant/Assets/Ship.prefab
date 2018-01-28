@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0ef80d67449f24084a3b8e1aa525b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRatePerSec: 0.5
+  fireRatePerSec: 4
   ControllerForce: 1200
   WavePull: 4000
   DeathAudioClip: {fileID: 8300000, guid: fd5d726edd2231044955e6dd58445ca1, type: 3}

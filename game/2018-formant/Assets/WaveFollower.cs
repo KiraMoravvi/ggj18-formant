@@ -7,7 +7,7 @@ public class WaveFollower : MonoBehaviour {
     private Rigidbody Rigidbody;
     private BulletGroup BulletGroup;
 
-    public float fireRatePerSec = 0.5f;
+    public float fireRatePerSec = 1.0f;
     float fireTimer = 0.0f;
 
     public float ControllerForce;
@@ -83,8 +83,9 @@ public class WaveFollower : MonoBehaviour {
             fireDirection.x = -1;
         if (Input.GetKey(KeyCode.J))
             fireDirection.x = 1;
+        
 
-        if (fireDirection.magnitude > 0.1f)
+        if (fireDirection.magnitude > 0.5f)
         {
             if (fireTimer == 0)
             {
