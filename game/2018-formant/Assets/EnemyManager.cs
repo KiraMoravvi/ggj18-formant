@@ -32,9 +32,7 @@ public class EnemyManager : MonoBehaviour {
     {
         spawnTimer += Time.fixedDeltaTime;
         if (spawnTimer > nextEnemySpawnTime)
-        {
-            spawnTimer = 0;
-            
+        {            
             if (enemies.Count < maxEnemies)
             {
                 spawnEnemy();
@@ -43,17 +41,19 @@ public class EnemyManager : MonoBehaviour {
                 if (spawnCount >= enemyDecreaseCount)
                 {
                     nextEnemySpawnTime -= spawnDecreaseRate;
-                    nextEnemySpawnTime = nextEnemySpawnTime < minSpawnTime ? minSpawnTime : nextEnemySpawnTime;
+                    if (nextEnemySpawnTime < minSpawnTime)
+                        nextEnemySpawnTime = minSpawnTime;
                     spawnCount = 0;
                 }
             }
+
+            spawnTimer = 0;
         }
 
         for (int i = 0; i < enemies.Count; i++)
         {
             if (enemies[i] == null)
             {
-                Destroy(enemies[i]);
                 enemies.RemoveAt(i);
                 i--;
             }

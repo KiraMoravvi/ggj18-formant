@@ -24,19 +24,19 @@ public class Sideways : Enemy {
         {
             if (Random.Range(0, 100) > 50)
             {
-                worldPos.x = (worldPosLeft.x - worldPos.x) + 1;
+                worldPos.x = (worldPosLeft.x - worldPos.x) + 5;
                 left = false;
             }
             else
             {
-                worldPos.x = (worldPosRight.x - worldPos.x) + Camera.main.pixelWidth - 1;
+                worldPos.x = (worldPosRight.x - worldPos.x) + Camera.main.pixelWidth - 5;
                 left = true;
             }
 
             rigidBody.position = Camera.main.ScreenToWorldPoint(worldPos);
         }
 
-        float moveHorizontal = (left ? -speed : speed) / 2.0f;
+        float moveHorizontal = (left ? speed : -speed) / 2.0f;
         float moveVertical = player.position.y - transform.position.y;
 
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
