@@ -138,7 +138,7 @@ public class TrackerWaveRenderer : MonoBehaviour, IWaveRenderer
         {
             var radius = Radius - RadiusWrapLow;
             radius /= RadiusWrapHigh - RadiusWrapLow;
-            radius += Time.time * 0.1f;
+            radius += Time.time * -0.1f;
             radius -= Mathf.Floor(radius);
             radius *= RadiusWrapHigh - RadiusWrapLow;
             radius += RadiusWrapLow;
