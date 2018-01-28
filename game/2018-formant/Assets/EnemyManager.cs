@@ -29,9 +29,10 @@ public class EnemyManager : MonoBehaviour {
 
     public List<AudioClip> EnemyAmbienceAudioClips = new List<AudioClip>();
     public List<AudioClip> EnemyDeathAudioClips = new List<AudioClip>();
+    public List<AudioClip> TakeDamageAudioClips = new List<AudioClip>();
 
-	// Update is called once per frame
-	void FixedUpdate ()
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         spawnTimer += Time.fixedDeltaTime;
         if (spawnTimer > nextEnemySpawnTime)

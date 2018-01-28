@@ -400,6 +400,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fe2c2b41d8028f46a58b0238705ec4a, type: 3}
   - {fileID: 8300000, guid: b6fb6db6cc4be5d4cac0a4a43ca1c7b2, type: 3}
   - {fileID: 8300000, guid: 67ae4a7d0f299d64baa230a076e9d609, type: 3}
+  TakeDamageAudioClips:
+  - {fileID: 8300000, guid: f1a6f3416d921ec4ea4560e72e6a2859, type: 3}
+  - {fileID: 8300000, guid: adf78986d6d57fb4690dbdb7f9c3fdbe, type: 3}
 --- !u!1 &879588349
 GameObject:
   m_ObjectHideFlags: 0

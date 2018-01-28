@@ -31,5 +31,10 @@ public class Enemy : MonoBehaviour {
             AudioSource.PlayClipAtPoint(DeathAudioClip, Vector3.Lerp(transform.position, GameObject.Find("Main Camera").transform.position, 0.9f));
             Destroy(gameObject);
         }
+        else
+        {
+            var takeDamageAudioClips = GameObject.Find("GameObject").GetComponent<EnemyManager>().TakeDamageAudioClips;
+            AudioSource.PlayClipAtPoint(takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Count)], Vector3.Lerp(transform.position, GameObject.Find("Main Camera").transform.position, 0.9f));
+        }
     }
 }
