@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using DigitalRuby.Tween;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
 
     Text timeText;
     Text gameOverText;
+    Button backToMenu;
+    Button playAgain;
     float currentTime = 0;
     public bool RunTimer = true;
     public float FinalTime { get { return currentTime; } }
@@ -18,6 +21,8 @@ public class UI : MonoBehaviour {
     {
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
         gameOverText = GameObject.Find("GameOver").GetComponent<Text>();
+        backToMenu = GameObject.Find("BackToMenu").GetComponent<Button>();
+        playAgain = GameObject.Find("PlayAgain").GetComponent<Button>();
     }
 	
 	// Update is called once per frame
@@ -56,6 +61,14 @@ public class UI : MonoBehaviour {
             gameOverText.rectTransform.localPosition.z
             );
         });
+        TweenFactory.Tween("PlayAgain", -300.0f, -121.0f, 2.0f, TweenScaleFunctions.QuadraticEaseOut, (t) =>
+        {
+            playAgain.transform.localPosition = new Vector3(0.0f, t.CurrentValue, 0.0f);
+        });
+        TweenFactory.Tween("BackToMenu", -300.0f, -165.0f, 2.0f, TweenScaleFunctions.QuadraticEaseOut, (t) =>
+        {
+            backToMenu.transform.localPosition = new Vector3(0.0f, t.CurrentValue, 0.0f);
+        });
     }
 
     string formatMultiDigits(int value, int digits)
@@ -71,5 +84,15 @@ public class UI : MonoBehaviour {
         }
 
         return s;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("mainmenu", LoadSceneMode.Single);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("james-wave", LoadSceneMode.Single);
     }
 }
