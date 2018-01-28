@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f6dacf2d6bfca2744838d1fe3be65585
+timeCreated: 1517132426
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DestructoBeam BB
+  fontNames:
+  - DestructoBeam BB
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

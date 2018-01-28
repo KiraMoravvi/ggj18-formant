@@ -8,6 +8,7 @@ using DigitalRuby.Tween;
 public class UI : MonoBehaviour {
 
     Text timeText;
+    Text gameOverText;
     float currentTime = 0;
     public bool RunTimer = true;
     public float FinalTime { get { return currentTime; } }
@@ -16,7 +17,8 @@ public class UI : MonoBehaviour {
 	void Start ()
     {
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
-	}
+        gameOverText = GameObject.Find("GameOver").GetComponent<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,9 +45,16 @@ public class UI : MonoBehaviour {
     {
         RunTimer = false;
 
-        TweenFactory.Tween("Bigger Text", 14, 72, 1, TweenScaleFunctions.QuadraticEaseOut, (t) =>
+        TweenFactory.Tween("Bigger Text", 14, 72, 2, TweenScaleFunctions.QuadraticEaseOut, (t) =>
+        {  timeText.fontSize = (int)t.CurrentValue; });
+
+        TweenFactory.Tween("Move Up", -300, -60, 1, TweenScaleFunctions.QuadraticEaseOut, (t) =>
         {
-            timeText.fontSize = (int)t.CurrentValue;
+            gameOverText.rectTransform.position = new Vector3(
+            gameOverText.rectTransform.position.x,
+            t.CurrentValue,
+            gameOverText.rectTransform.position.z
+            );
         });
     }
 

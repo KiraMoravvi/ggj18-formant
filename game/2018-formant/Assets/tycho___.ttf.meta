@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 21328cdbf55abe1429f50d5b9a48154a
+timeCreated: 1517132426
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Tycho
+  fontNames:
+  - Tycho
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
