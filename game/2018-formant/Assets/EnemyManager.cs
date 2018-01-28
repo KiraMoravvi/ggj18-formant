@@ -31,6 +31,8 @@ public class EnemyManager : MonoBehaviour {
     public List<AudioClip> EnemyDeathAudioClips = new List<AudioClip>();
     public List<AudioClip> TakeDamageAudioClips = new List<AudioClip>();
 
+    public GameObject ExplosionFlash;
+
     // Update is called once per frame
     void FixedUpdate ()
     {
@@ -96,6 +98,7 @@ public class EnemyManager : MonoBehaviour {
         audioSource.Play();
 
         go.GetComponent<Enemy>().DeathAudioClip = EnemyDeathAudioClips[type];
+        go.GetComponent<Enemy>().ExplosionFlash = ExplosionFlash;
 
         enemies.Add(go);
     }

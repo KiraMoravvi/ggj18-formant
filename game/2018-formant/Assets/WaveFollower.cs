@@ -14,6 +14,7 @@ public class WaveFollower : MonoBehaviour {
     public float WavePull;
 
     public AudioClip DeathAudioClip;
+    public GameObject ExplosionFlash;
 
     public Game Game;
 
@@ -103,6 +104,8 @@ public class WaveFollower : MonoBehaviour {
         if (Mathf.Abs(transform.position.x) > 5.0f || transform.position.y < 0.5f || magnitude > 6.5f)
         {
             AudioSource.PlayClipAtPoint(DeathAudioClip, Vector3.Lerp(transform.position, GameObject.Find("Main Camera").transform.position, 0.9f));
+            var explosionFlash = Instantiate(ExplosionFlash);
+            explosionFlash.transform.position = transform.position;
             Destroy(gameObject);
             GameObject.Find("UICanvas").GetComponent<UI>().PlayerDied();
         }

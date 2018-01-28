@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     protected MeshFilter mesh;
 
     public AudioClip DeathAudioClip;
+    public GameObject ExplosionFlash;
 
     public int Health = 3;
 
@@ -27,6 +28,8 @@ public class Enemy : MonoBehaviour {
         if (Health <= 0)
         {
             AudioSource.PlayClipAtPoint(DeathAudioClip, Vector3.Lerp(transform.position, GameObject.Find("Main Camera").transform.position, 0.9f));
+            var explosionFlash = Instantiate(ExplosionFlash);
+            explosionFlash.transform.position = transform.position;
             Destroy(gameObject);
         }
         else
