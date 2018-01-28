@@ -23,8 +23,6 @@ public class Enemy : MonoBehaviour {
 
     public void Hurt()
     {
-        Debug.Log("Ouch");
-
         Health--;
         if (Health <= 0)
         {
