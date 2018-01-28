@@ -416,6 +416,8 @@ GameObject:
   - component: {fileID: 879588351}
   - component: {fileID: 879588350}
   - component: {fileID: 879588355}
+  - component: {fileID: 879588356}
+  - component: {fileID: 879588357}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -511,6 +513,115 @@ MonoBehaviour:
   _highQuality: 1
   _antiFlicker: 1
   _shader: {fileID: 4800000, guid: 5a711a01011934ebcb58ef5ad52159d6, type: 3}
+--- !u!114 &879588356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879588349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd206a563e180a44b2243c49d3b98de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscillators:
+  - frequency: 220
+    gain: 0.5
+    gain_target:
+      value: 0
+      current: 0
+      direction: 0
+      sample_delta: 0
+    increment: 0
+    phase: 0
+    avg_gain: 0
+  - frequency: 440
+    gain: 0.25
+    gain_target:
+      value: 0
+      current: 0
+      direction: 0
+      sample_delta: 0
+    increment: 0
+    phase: 0
+    avg_gain: 0
+  - frequency: 660
+    gain: 0.12
+    gain_target:
+      value: 0
+      current: 0
+      direction: 0
+      sample_delta: 0
+    increment: 0
+    phase: 0
+    avg_gain: 0
+  - frequency: 880
+    gain: 0.06
+    gain_target:
+      value: 0
+      current: 0
+      direction: 0
+      sample_delta: 0
+    increment: 0
+    phase: 0
+    avg_gain: 0
+  gain: 0.2
+  attack: 30
+  decay: 1000
+  base_frequency: 440
+  play_frequency: 0
+  trigger: 0
+  gain_trigger:
+    value: 0
+    current: 0
+    direction: 0
+    sample_delta: 0
+--- !u!114 &879588357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879588349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e7c9c78ce922b4a9c7ea268af7aa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 140
+  notesToPlay:
+    instrument: {fileID: 879588356}
+    notes:
+    - frequency: 440
+      triggerOn: 0
+      triggerLength: 0.4
+    - frequency: 587.33
+      triggerOn: 0.5
+      triggerLength: 0.1
+    - frequency: 587.33
+      triggerOn: 1.5
+      triggerLength: 0.3
+    - frequency: 349.23
+      triggerOn: 2.5
+      triggerLength: 0.4
+    - frequency: 660
+      triggerOn: 3
+      triggerLength: 3
+    - frequency: 440
+      triggerOn: 6
+      triggerLength: 0
+    - frequency: 330
+      triggerOn: 6.25
+      triggerLength: 0
+    - frequency: 310
+      triggerOn: 6.5
+      triggerLength: 0
+    - frequency: 440
+      triggerOn: 6.75
+      triggerLength: 0.15
+    loop: 1
+  lastNote:
+    noteIndex: 0
+    distanceFromT: 0
 --- !u!1001 &892617511
 Prefab:
   m_ObjectHideFlags: 0
@@ -520,15 +631,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5edd0ee0d6739834195af5f177a959dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: -22.78
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5edd0ee0d6739834195af5f177a959dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.07
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5edd0ee0d6739834195af5f177a959dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.35
+      value: -22.68
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5edd0ee0d6739834195af5f177a959dd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -852,6 +963,66 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae533eccafe8ac04398e856812a49701, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1661168732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1661168734}
+  - component: {fileID: 1661168733}
+  - component: {fileID: 1661168735}
+  m_Layer: 0
+  m_Name: SynthPlaceholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661168733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661168732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd206a563e180a44b2243c49d3b98de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscillators: []
+  gain: 0.3
+  attack: 0
+  decay: 0
+  base_frequency: 440
+  play_frequency: 0
+  trigger: 1
+  gain_trigger:
+    value: 0
+    current: 0
+    direction: 0
+    sample_delta: 0
+--- !u!4 &1661168734
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661168732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3538471, y: 0.78351605, z: -9.822747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1661168735
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661168732}
+  m_Enabled: 0
 --- !u!1 &1940411022 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: ae533eccafe8ac04398e856812a49701, type: 3}

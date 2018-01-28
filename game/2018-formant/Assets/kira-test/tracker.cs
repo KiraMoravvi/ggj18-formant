@@ -70,7 +70,6 @@ public class tracker : MonoBehaviour {
 
         if(t <= endT) {
             //FIND THE BEAT - LOOP THROUGH THE NOTES IN THE BEAT
-            Debug.Log("Notes in beat: ");
             float lowestNoteT = endT;
             int lowestNote = -1;
 
@@ -105,7 +104,6 @@ public class tracker : MonoBehaviour {
         if(t > endT) {
             if(notesToPlay.loop) {
                 var totalPlays = Mathf.Floor(t / endT);
-                Debug.Log("Total Plays: " + totalPlays); 
                 t = t - (totalPlays * endT);
                 curBeat = Mathf.Floor(t);
             } else {
@@ -177,9 +175,6 @@ public class tracker : MonoBehaviour {
             curBeatT += 1;
         }
 
-        foreach(var list in notes_per_beat) {
-            Debug.Log("Beat #" + (int)list.Key + ": No of notes: " + list.Value.Count);
-        }
         
     }
 
@@ -193,9 +188,6 @@ public class tracker : MonoBehaviour {
         var curNoteInfo = notesToPlay.notes[lastNote.noteIndex];
 
         notesToPlay.instrument.play_frequency = notesToPlay.notes[lastNote.noteIndex].frequency;
-
-        //Debug.Log("Trigger Length: " + curNoteInfo.triggerLength);
-        Debug.Log("Distance from T: " + lastNote.distanceFromT);
 
         if(lastNote.distanceFromT < curNoteInfo.triggerLength) {
             notesToPlay.instrument.trigger = true;

@@ -23,6 +23,21 @@ public class TrackerWaveRenderer : MonoBehaviour, IWaveRenderer
     public Vector4 Positions;
     public Vector4 Widths;
 
+    float posFrequencyRangeMin = 261.63F;        //C4
+    float posFrequencyRangeMax = 523.25F;         //C5
+
+    private float clampFrequency(float freq) {
+        while(freq > posFrequencyRangeMax) {
+            freq = freq / 2;
+        }
+
+        while(freq < posFrequencyRangeMin) {
+            freq = freq * 2;
+        }
+
+        return freq;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,9 +62,53 @@ public class TrackerWaveRenderer : MonoBehaviour, IWaveRenderer
 
         // TODO: This here just redefines the variables used by this class.
         // These should be filled in when the tracker is ready.
-        Amplitudes = new Vector4(1.0f, 0.0f, 0.0f, 2.0f);
-        Positions = new Vector4(Mathf.Sin(Time.time) * 0.25f + 0.5f, 0.0f, 0.0f, Mathf.Sin(Time.time * 0.25f) * 0.5f + 0.5f);
-        Widths = new Vector4(0.01f, 1.0f, 1.0f, 0.05f);
+
+        //GET OSCILATOR
+        var camera = GameObject.FindGameObjectWithTag("MainCamera");
+        osc curOsc = camera.GetComponent<osc>();
+
+        float[] oscPositions = { 0.0f, 0.0f, 0.0f, 0.0f };
+        float[] oscWidth = { 0.0f, 0.0f, 0.0f, 0.0f };
+        float[] oscAmplitudes = { 1.0f, 0.0f, 0.0f, 0.0f };
+
+        //ALL FREQUENCIES SHOULD BE IN HERE
+        float posFrequencyRangeDelta = posFrequencyRangeMax - posFrequencyRangeMin;
+        var oscCount = 4;
+
+        if(curOsc.oscillators.Length < 4) {
+            oscCount = curOsc.oscillators.Length;
+        }
+
+        for(var x = 0; x < oscCount; ++x) {
+            oscPositions[x] = ((clampFrequency((float)curOsc.oscillators[x].frequency * curOsc.play_frequency / curOsc.base_frequency) - posFrequencyRangeMin) / posFrequencyRangeMax) + 0.25F;
+            oscWidth[x] = (float)curOsc.oscillators[x].gain;
+
+            //COMPRESS - SO LOUDER ONES ARE SMALLER AND SMALLER ONES ARE LARGER
+            oscAmplitudes[x] = (float)curOsc.gain_trigger.current  * 2;
+        }
+
+        /*
+        Debug.Log(oscPositions[0]);
+        Debug.Log(oscPositions[1]);
+        Debug.Log(oscPositions[2]);
+        Debug.Log(oscPositions[3]);
+    /*
+        Debug.Log(oscWidth[0]);
+        Debug.Log(oscWidth[1]);
+        Debug.Log(oscWidth[2]);
+        Debug.Log(oscWidth[3]);/**/
+        /*
+        Debug.Log(oscAmplitudes[0]);
+        Debug.Log(oscAmplitudes[1]);
+        Debug.Log(oscAmplitudes[2]);
+        Debug.Log(oscAmplitudes[3]);
+        */
+        //curOsc.oscillators
+
+        Amplitudes = new Vector4(oscAmplitudes[0], oscAmplitudes[1], oscAmplitudes[2], oscAmplitudes[3]);
+        //Positions = new Vector4(Mathf.Sin(Time.time) * 0.25f + 0.5f, 0.3f, 0.0f, Mathf.Sin(Time.time * 0.25f) * 0.5f + 0.5f);
+        Positions = new Vector4(oscPositions[0], oscPositions[1], oscPositions[2], -oscPositions[3] * 3);
+        Widths = new Vector4(0.01f, 0.01f, 0.01f, 0.2f);
 
         Material.SetVector("_Amplitudes", Amplitudes);
         Material.SetVector("_Positions", Positions);
