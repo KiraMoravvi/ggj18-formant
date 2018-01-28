@@ -22,7 +22,7 @@ public class UI : MonoBehaviour {
 	void Update () {
 
         if (RunTimer)
-            currentTime += Time.fixedUnscaledDeltaTime;
+            currentTime += Time.deltaTime;
 
         int milliseconds = (int)(FinalTime * 1000) % 1000;
         int seconds = (int)FinalTime % 60;
