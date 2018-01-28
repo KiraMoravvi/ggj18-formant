@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114873453467997798}
   - component: {fileID: 54279501787256028}
   - component: {fileID: 65335335185309448}
+  - component: {fileID: 114681895968513222}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -332,6 +333,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114681895968513222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528650632333486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4474fb0ff246c4b9f05583e9f4493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NUM_BULLETS: 20
+  Instance: {fileID: 114399234729525782, guid: c01d666cec2143d46ad60fc1d9802d4c, type: 2}
 --- !u!114 &114873453467997798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0ef80d67449f24084a3b8e1aa525b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRatePerSec: 0.5
   ControllerForce: 1200
   WavePull: 4000
   Game: {fileID: 0}
