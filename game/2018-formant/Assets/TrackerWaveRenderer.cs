@@ -5,6 +5,8 @@ using UnityEngine;
 public class TrackerWaveRenderer : MonoBehaviour, IWaveRenderer
 {
     public float Radius = 2.0f;
+    public float RadiusWrapLow;
+    public float RadiusWrapHigh;
 
     private Material Material;
     public bool IsClosest { get; set; }
@@ -116,17 +118,31 @@ public class TrackerWaveRenderer : MonoBehaviour, IWaveRenderer
         Material.SetColor("_Color", Color.Lerp(Color.Lerp(new Color(0.25f, 0.5f, 1.0f), new Color(1.0f, 1.5f, 4.0f), ClosestIntensity), new Color(8.0f, 8.0f, 8.0f), NewlyClosestIntensity));
         Material.SetFloat("_NoiseAmplitude", 0.1f);
         Material.SetFloat("_NoisePosition", Time.time * 0.5f);
-        Material.SetFloat("_Radius", Radius);
+        Material.SetFloat("_Radius", EffectiveRadius);
         Material.SetFloat("_Thickness", 0.25f);
     }
 
     public float RadiusAt(float position)
     {
-        var output = Radius;
+        var output = EffectiveRadius;
         output += (Mathf.Cos(Mathf.Min(Mathf.Abs((-position / Mathf.PI) + 0.5f - Positions.x) / Widths.x, Mathf.PI)) * 0.5f + 0.5f) * Amplitudes.x;
         output += (Mathf.Cos(Mathf.Min(Mathf.Abs((-position / Mathf.PI) + 0.5f - Positions.y) / Widths.y, Mathf.PI)) * 0.5f + 0.5f) *Amplitudes.y;
         output += (Mathf.Cos(Mathf.Min(Mathf.Abs((-position / Mathf.PI) + 0.5f - Positions.z) / Widths.z, Mathf.PI)) * 0.5f + 0.5f) *Amplitudes.z;
         output += (Mathf.Cos(Mathf.Min(Mathf.Abs((-position / Mathf.PI) + 0.5f - Positions.w) / Widths.w, Mathf.PI)) * 0.5f + 0.5f) *Amplitudes.w;
         return output;
+    }
+
+    public float EffectiveRadius
+    {
+        get
+        {
+            var radius = Radius - RadiusWrapLow;
+            radius /= RadiusWrapHigh - RadiusWrapLow;
+            radius += Time.time * 0.1f;
+            radius -= Mathf.Floor(radius);
+            radius *= RadiusWrapHigh - RadiusWrapLow;
+            radius += RadiusWrapLow;
+            return radius;
+        }
     }
 }

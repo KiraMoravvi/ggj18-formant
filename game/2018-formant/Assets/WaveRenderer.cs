@@ -7,6 +7,8 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
     public Texture2D WaveTexture;
     public Texture2D SequenceTexture;
     public float Radius;
+    public float RadiusWrapLow;
+    public float RadiusWrapHigh;
     public Vector3 Amplitude;
     public float NoiseAmplitude;
     public bool IsClosest { get; set; }
@@ -69,7 +71,7 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
         MeshRenderer.SetFloat("_LoopProgress", ((float)time) - Mathf.Floor((float)time));
         MeshRenderer.SetFloat("_Position", 0.0f);
         MeshRenderer.SetFloat("_NoisePosition", Time.time);
-        MeshRenderer.SetFloat("_Radius", Radius);
+        MeshRenderer.SetFloat("_Radius", EffectiveRadius);
         Amplitude = Time.time * new Vector3(2.0f, 1.0f, 4.0f);
         Amplitude -= new Vector3(Mathf.Floor(Amplitude.x), Mathf.Floor(Amplitude.y), Mathf.Floor(Amplitude.z));
         Amplitude = new Vector3(Amplitude.x * 2.0f, Amplitude.y * 1.0f, Amplitude.z * 4.0f);
@@ -101,6 +103,20 @@ public class WaveRenderer : MonoBehaviour, IWaveRenderer {
         var loopedTime = ((float)time) - Mathf.Floor((float)time);
         var sequenceSample = SequenceTexture.GetPixelBilinear(loopedTime, 0.0f);
         var waveSample = WaveTexture.GetPixelBilinear((-position / Mathf.PI) + 0.5f, 0);
-        return Radius + Vector3.Dot(new Vector3(sequenceSample.r, sequenceSample.g, sequenceSample.b), new Vector3(waveSample.r, waveSample.g, waveSample.b));
+        return EffectiveRadius + Vector3.Dot(new Vector3(sequenceSample.r, sequenceSample.g, sequenceSample.b), new Vector3(waveSample.r, waveSample.g, waveSample.b));
+    }
+
+    public float EffectiveRadius
+    {
+        get
+        {
+            var radius = Radius - RadiusWrapLow;
+            radius /= RadiusWrapHigh - RadiusWrapLow;
+            radius += Time.time * 0.1f;
+            radius -= Mathf.Floor(radius);
+            radius *= RadiusWrapHigh - RadiusWrapLow;
+            radius += RadiusWrapLow;
+            return radius;
+        }
     }
 }

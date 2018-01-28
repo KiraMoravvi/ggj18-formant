@@ -31,6 +31,8 @@ public class Game : MonoBehaviour {
         {
             var waveRenderer = Instantiate(WavePrefab).GetComponent<WaveRenderer>();
             waveRenderer.Radius = Waves.Count * 0.75f + 1.5f;
+            waveRenderer.RadiusWrapLow = 1.5f;
+            waveRenderer.RadiusWrapHigh = (Rings.Count + 1) * 0.75f + 1.5f;
             waveRenderer.WaveTexture = ring.WaveTexture;
             waveRenderer.SequenceTexture = ring.SequenceTexture;
             waveRenderer.AudioClips = ring.AudioClips;
@@ -40,6 +42,8 @@ public class Game : MonoBehaviour {
         }
         var trackerWaveRenderer = Instantiate(TrackerWavePrefab).GetComponent<TrackerWaveRenderer>();
         trackerWaveRenderer.Radius = Waves.Count * 0.75f + 1.5f;
+        trackerWaveRenderer.RadiusWrapLow = 1.5f;
+        trackerWaveRenderer.RadiusWrapHigh = (Rings.Count + 1) * 0.75f + 1.5f;
         Waves.Add(trackerWaveRenderer);
         var ship = Instantiate(ShipPrefab);
         ship.GetComponent<WaveFollower>().Game = this;
