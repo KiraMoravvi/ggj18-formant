@@ -91,7 +91,7 @@ public class WaveFollower : MonoBehaviour {
                 BulletGroup.Fire(Rigidbody.position, fireDirection, 12.5f);
             }
 
-            fireTimer += Time.fixedDeltaTime;
+            fireTimer += Time.deltaTime;
             if (fireTimer > 1.0f / fireRatePerSec)
                 fireTimer = 0;
         }
