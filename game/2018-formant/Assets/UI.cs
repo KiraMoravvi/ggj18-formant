@@ -50,10 +50,10 @@ public class UI : MonoBehaviour {
 
         TweenFactory.Tween("Move Up", -300, -60, 1, TweenScaleFunctions.QuadraticEaseOut, (t) =>
         {
-            gameOverText.rectTransform.position = new Vector3(
-            gameOverText.rectTransform.position.x,
+            gameOverText.rectTransform.localPosition = new Vector3(
+            gameOverText.rectTransform.localPosition.x,
             t.CurrentValue,
-            gameOverText.rectTransform.position.z
+            gameOverText.rectTransform.localPosition.z
             );
         });
     }

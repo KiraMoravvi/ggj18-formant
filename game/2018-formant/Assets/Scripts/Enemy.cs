@@ -22,6 +22,14 @@ public class Enemy : MonoBehaviour {
         mesh = GetComponent<MeshFilter>();
 	}
 
+    void Update()
+    {
+        if (player == null) //Assume dead
+        {
+            player = GameObject.Find("GameObject").transform;
+        }
+    }
+
     public void Hurt()
     {
         Health--;
