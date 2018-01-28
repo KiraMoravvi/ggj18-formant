@@ -11,6 +11,6 @@ public class SkyboxSpin2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(0.15f, 0.05f, -0.05f);
+        transform.Rotate(1.5f * Time.deltaTime, 0.5f * Time.deltaTime, -0.5f * Time.deltaTime);
     }
 }
