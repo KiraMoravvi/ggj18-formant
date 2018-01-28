@@ -390,6 +390,11 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 657d4628823043b40bfe6a0dea0c962d, type: 3}
   - {fileID: 4300000, guid: e1f4cbfd94fa9c748b7044d60c3cbda4, type: 3}
   Instance: {fileID: 1971192321982600, guid: 9f934ca828d786f4ba33b02dec6a7d1f, type: 2}
+  EnemyAmbienceAudioClips:
+  - {fileID: 8300000, guid: b0e289de338d0004aa07b50820788d72, type: 3}
+  - {fileID: 8300000, guid: c9f0701c29967f44d80c2a542651985a, type: 3}
+  - {fileID: 8300000, guid: e73de0a4cf9723c45a2b83111197659c, type: 3}
+  - {fileID: 8300000, guid: be2ba3e9aaef25943afa4861bfdf9c59, type: 3}
 --- !u!1 &879588349
 GameObject:
   m_ObjectHideFlags: 0
