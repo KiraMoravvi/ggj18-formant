@@ -31,9 +31,19 @@ public class EnemyManager : MonoBehaviour {
     public List<AudioClip> EnemyDeathAudioClips = new List<AudioClip>();
     public List<AudioClip> TakeDamageAudioClips = new List<AudioClip>();
 
+    GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Ship(Clone)");
+    }
+
     // Update is called once per frame
     void FixedUpdate ()
     {
+        if (player == null)
+            return;
+
         spawnTimer += Time.fixedDeltaTime;
         if (spawnTimer > nextEnemySpawnTime)
         {            

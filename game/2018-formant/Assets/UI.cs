@@ -39,9 +39,6 @@ public class UI : MonoBehaviour {
         timeText.text += formatMultiDigits(minutes, 2);
         timeText.text += ":" + formatMultiDigits(seconds, 2);
         timeText.text += ":" + formatMultiDigits(milliseconds, 3);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            PlayerDied();
 	}
 
     public void PlayerDied()
