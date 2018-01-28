@@ -364,4 +364,5 @@ MonoBehaviour:
   fireRatePerSec: 0.5
   ControllerForce: 1200
   WavePull: 4000
+  DeathAudioClip: {fileID: 8300000, guid: fd5d726edd2231044955e6dd58445ca1, type: 3}
   Game: {fileID: 0}
