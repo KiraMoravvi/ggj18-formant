@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class WaveFollower : MonoBehaviour {
     private Rigidbody Rigidbody;
+    private BulletGroup BulletGroup;
+
+    public float fireRatePerSec = 0.5f;
+    float fireTimer = 0.0f;
 
     public float ControllerForce;
     public float WavePull;
@@ -14,6 +18,7 @@ public class WaveFollower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Rigidbody = GetComponent<Rigidbody>();
+        BulletGroup = GetComponent<BulletGroup>();
 	}
 	
 	// Update is called once per frame
@@ -64,5 +69,32 @@ public class WaveFollower : MonoBehaviour {
 
         var wavePullRolloff = (closestWave.RadiusAt(angle) - magnitude);
         Rigidbody.AddForce(normal * WavePull * Time.deltaTime * wavePullRolloff, ForceMode.Acceleration);
+
+        Vector3 fireDirection = new Vector3();
+        if (Input.GetKey(KeyCode.I))
+            fireDirection.y = 1;
+        if (Input.GetKey(KeyCode.K))
+            fireDirection.y = -1;
+        if (Input.GetKey(KeyCode.L))
+            fireDirection.x = -1;
+        if (Input.GetKey(KeyCode.J))
+            fireDirection.x = 1;
+
+        if (fireDirection != Vector3.zero)
+        {
+            if (fireTimer == 0)
+            {
+                fireDirection.Normalize();
+                BulletGroup.Fire(Rigidbody.position, fireDirection, 12.5f);
+            }
+
+            fireTimer += Time.fixedDeltaTime;
+            if (fireTimer > 1.0f / fireRatePerSec)
+                fireTimer = 0;
+        }
+        else
+        {
+            fireTimer = 0;
+        }
     }
 }
