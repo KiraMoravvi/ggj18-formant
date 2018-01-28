@@ -21,7 +21,7 @@ public class Faller : Enemy {
 
         if (worldPosTop.y < 0)
         {
-            worldPos.x = Random.Range(-50, 50) + (Camera.main.pixelWidth / 2.0f);
+            worldPos.x = Random.Range(Camera.main.pixelWidth / -2.0f, Camera.main.pixelWidth / 2.0f);
             worldPos.y = Camera.main.pixelHeight + (worldPosTop.y - worldPos.y);
             rigidBody.position = Camera.main.ScreenToWorldPoint(worldPos);
         }
