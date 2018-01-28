@@ -48,7 +48,7 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				return fixed4(float3(8.0f, 8.0f, 4.0f) * pow(saturate(1.0 - 2.0 * distance(i.uv, 0.5)), 6.0), 1.0);
+				return fixed4(float3(4.0f, 4.0f, 2.0f) * pow(saturate(1.0 - 2.0 * distance(i.uv, 0.5)), 6.0), 1.0);
 			}
 			ENDCG
 		}
