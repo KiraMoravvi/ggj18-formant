@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour {
     protected Rigidbody rigidBody;
     protected MeshFilter mesh;
 
+    public AudioClip DeathAudioClip;
+
     public int Health = 3;
 
 	// Use this for initialization
@@ -25,6 +27,9 @@ public class Enemy : MonoBehaviour {
 
         Health--;
         if (Health <= 0)
+        {
+            AudioSource.PlayClipAtPoint(DeathAudioClip, Vector3.Lerp(transform.position, GameObject.Find("Main Camera").transform.position, 0.9f));
             Destroy(gameObject);
+        }
     }
 }
