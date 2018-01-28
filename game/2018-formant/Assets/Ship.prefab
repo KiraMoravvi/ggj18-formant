@@ -346,6 +346,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NUM_BULLETS: 20
   Instance: {fileID: 114399234729525782, guid: c01d666cec2143d46ad60fc1d9802d4c, type: 2}
+  Pew:
+  - {fileID: 8300000, guid: 47e174d30f54c054b8f15ef11dc00f1f, type: 3}
+  - {fileID: 8300000, guid: 11bc32d4919e24543b9ee8859044769e, type: 3}
+  - {fileID: 8300000, guid: 5a30485f80a827042bc2467fa2c966c9, type: 3}
 --- !u!114 &114873453467997798
 MonoBehaviour:
   m_ObjectHideFlags: 1

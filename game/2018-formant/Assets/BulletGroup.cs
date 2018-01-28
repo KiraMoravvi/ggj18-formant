@@ -8,6 +8,8 @@ public class BulletGroup : MonoBehaviour {
     public Bullet Instance;
     List<Bullet> bulletList;
 
+    public List<AudioClip> Pew = new List<AudioClip>();
+
     // Use this for initialization
     void Start () {
         bulletList = new List<Bullet>();
@@ -37,6 +39,8 @@ public class BulletGroup : MonoBehaviour {
 
         if (b)
         {
+            AudioSource.PlayClipAtPoint(Pew[Random.Range(0, Pew.Count)], new Vector3(pos.x, pos.y, 5.0f));
+
             b.Activate();
             b.RB.position = pos;
             b.RB.velocity = direction * speed;
